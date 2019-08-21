@@ -7,8 +7,8 @@ async function requestStake() {
   const account = web3.eth.accounts.privateKeyToAccount(privateKey);
   console.log('address ', account.address);
   web3.eth.accounts.wallet.add(account);
-  const amountToStake = '26';
-  const nonce = '26';
+  const amountToStake = '27';
+  const nonce = '27';
   const abi = [
     {
       constant: true,

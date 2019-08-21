@@ -84,7 +84,7 @@ export default class GraphClient {
             }
           },
           error(err) {
-            Logger.error(`Observer error: ${err}`);
+            Logger.error(`Observer error: ${JSON.stringify(err)}`);
           },
           complete() {
             Logger.info(`Completed subscription flow for subscriptionQry: ${subscriptionQry}`);
