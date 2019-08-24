@@ -20,11 +20,9 @@ export default class Facilitator {
 
   /** Starts the facilitator by subscribing to subscription queries. */
   public async start(): Promise<void> {
-    Logger.info('Starting subscription to block chain events');
-    await this.originSubscriber.subscribe();
-    Logger.info('Subscription to origin block chain is done');
-    await this.auxiliarySubscriber.subscribe();
-    Logger.info('Subscription to auxiliary block chain is done');
+    this.subscribeToSubGraphs();
+    const subscriptionRestartTime = 15*60*1000; // 15 minutes
+    setInterval(() => this.restartSubscription(), subscriptionRestartTime);
   }
 
   /**
@@ -32,6 +30,23 @@ export default class Facilitator {
    * This function should be called on signint or control-c.
    */
   public async stop(): Promise<void> {
+    this.unsubscribeToSubGraphs();
+  }
+
+  private async restartSubscription() {
+    this.unsubscribeToSubGraphs();
+    this.subscribeToSubGraphs()
+  }
+
+  private async subscribeToSubGraphs() {
+    Logger.info('Starting subscription to block chain events');
+    await this.originSubscriber.subscribe();
+    Logger.info('Subscription to origin block chain is done');
+    await this.auxiliarySubscriber.subscribe();
+    Logger.info('Subscription to auxiliary block chain is done');
+  }
+
+  private async unsubscribeToSubGraphs(){
     Logger.info('Stopping subscription to block chain events');
     await this.originSubscriber.unsubscribe();
     Logger.info('Unsubscribed to origin block chain.');
