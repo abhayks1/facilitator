@@ -1,9 +1,9 @@
 const Web3 = require('web3');
 
 async function deploy() {
-  const web3 = new Web3('http://3.214.143.1:40003');
-  const privateKey = '0xE6A3AFCA1DAA75732B34552D3BC5BD2157F17CEFF475B28C87AF93643DAE7084';
-  const organizationAddress = '0xE8AFd455FFB47874c23C53118D904c003CC664fE';
+  const web3 = new Web3('https://mosaicdao.org/origin/goerli');
+  const privateKey = '0x082DF97BCD7B9AE1D0EF586D38EF744822A128EFB31C6DBC47E485049B7D12EA';
+  const organizationAddress = '0x64a3394F4b321E7F9930603dA2094af44c1E7500';
   const account = web3.eth.accounts.privateKeyToAccount(privateKey);
   console.log('address ', account.address);
   web3.eth.accounts.wallet.add(account);
