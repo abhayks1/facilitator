@@ -1,6 +1,6 @@
 const Web3 = require('web3');
 
-const gethEndpoint = 'ws://34.244.36.178:50005';
+const gethEndpoint = 'https://mosaicdao.org/origin/goerli';
 const eip20Abi = [
   {
     anonymous: false,
@@ -221,9 +221,10 @@ const eip20Abi = [
 const simpleTokenAddress = '0xd426b22f3960d01189a3d548b45a7202489ff4de';
 const ostComposerAddress = '0xEAA192D486ac5243886a28001E27A68caE5FDE4B';
 const ostToTransfer = '1000000000000000';
-const ethTOTransfer = '1000000000000000';
+const ethTOTransfer = '1000000000000000000';
 const approveAmount = '1000000000000000';
 const web3 = new Web3(gethEndpoint);
+web3.transactionConfirmationBlocks = 1;
 
 const reservePrivateKey = '0x9D966E0021308793DDEB9F997710DFCAC0141C8C26BF733996D532EF30631463';
 const reserveAccount = web3.eth.accounts.privateKeyToAccount(reservePrivateKey);

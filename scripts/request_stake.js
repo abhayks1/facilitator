@@ -1,16 +1,15 @@
 const Web3 = require('web3');
 
 async function requestStake() {
-  const web3 = new Web3('http://34.244.36.178:40005');
-  const privateKey = '0x6f2c9b79a9a6900893abf1f8fb934760878985c0aaa9e9fd7b03874802f36f4e';
-  // const privateKey = '0x0093660eefe7b3a80fd78ab81fbc14fab1251f1e20e08c5b0d49f382354f1cdb';
+  const web3 = new Web3('https://mosaicdao.org/origin/goerli');
+  const privateKey = '0x9bd85647112c2bf0326f4d6e0e9c1d4b8f54032420589378dd6ce7eab349aae3';
   const gatewayAddress = '0xe11e76C1ecA13Ae4ABA871EabDf37C24b8e1928B';
   const account = web3.eth.accounts.privateKeyToAccount(privateKey);
   console.log('address ', account.address);
   web3.eth.accounts.wallet.add(account);
-  const amountToStake = '12';
+  const amountToStake = '99';
   // const amountToStake = '2';
-  const nonce = '12';
+  const nonce = '1';
   // const nonce = '2';
   const abi = [
     {
