@@ -1,6 +1,6 @@
 const Web3 = require('web3');
 
-const gethEndpoint = 'https://mosaicdao.org/origin/goerli';
+const gethEndpoint = 'ws://mosaicdao.org/origin/goerli/socket';
 const eip20Abi = [
   {
     anonymous: false,
