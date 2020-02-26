@@ -20,3 +20,36 @@ export const AUXILIARY_GAS_PRICE = '0x3B9ACA00'; // 1 Gwei
 export const MESSAGE_BOX_OFFSET = '7';
 export const SUBSCRIPTION_RESTART_DURATION = 10 * 60 * 1000;
 export const MAX_VALUE = 999999999999999999999999999999999999999999999999999999999999999999999999999999;
+export const EntityTypes = {
+  StateRootAvailables: 'stateRootAvailables',
+  GatewayProvens: 'gatewayProvens',
+  // Stake & Mint entities
+  StakeRequesteds: 'stakeRequesteds',
+  StakeIntentDeclareds: 'stakeIntentDeclareds',
+  StakeIntentConfirmeds: 'stakeIntentConfirmeds',
+  StakeProgresseds: 'stakeProgresseds',
+  MintProgresseds: 'mintProgresseds',
+  // Redeem & Unstake entities
+  RedeemRequesteds: 'redeemRequesteds',
+  RedeemIntentDeclareds: 'redeemIntentDeclareds',
+  RedeemIntentConfirmeds: 'redeemIntentConfirmeds',
+  RedeemProgresseds: 'redeemProgresseds',
+  UnstakeProgresseds: 'unstakeProgresseds',
+};
+
+// export enum EntityTypesEnum {
+//   StateRootAvailables = 'stateRootAvailables',
+//   GatewayProvens = 'gatewayProvens',
+//   // Stake & Mint entities
+//   StakeRequesteds = 'stakeRequesteds',
+//   StakeIntentDeclareds = 'stakeIntentDeclareds',
+//   StakeIntentConfirmeds = 'stakeIntentConfirmeds',
+//   StakeProgresseds = 'stakeProgresseds',
+//   MintProgresseds = 'mintProgresseds',
+//   // Redeem & Unstake entities
+//   RedeemRequesteds = 'redeemRequesteds',
+//   RedeemIntentDeclareds = 'redeemIntentDeclareds',
+//   RedeemIntentConfirmeds = 'redeemIntentConfirmeds',
+//   RedeemProgresseds = 'redeemProgresseds',
+//   UnstakeProgresseds = 'unstakeProgresseds',
+// }

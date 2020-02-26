@@ -17,28 +17,7 @@
 
 import BigNumber from 'bignumber.js';
 
-import Comparable from '../observer/Comparable';
-
-/**
- * Entity types of origin and aux chain for which timestamp will be recorded.
- */
-export enum EntityType {
-  // Common entities
-  StateRootAvailables = 'stateRootAvailables',
-  GatewayProvens = 'gatewayProvens',
-  // Stake & Mint entities
-  StakeRequesteds = 'stakeRequesteds',
-  StakeIntentDeclareds = 'stakeIntentDeclareds',
-  StakeIntentConfirmeds = 'stakeIntentConfirmeds',
-  StakeProgresseds = 'stakeProgresseds',
-  MintProgresseds = 'mintProgresseds',
-  // Redeem & Unstake entities
-  RedeemRequesteds = 'redeemRequesteds',
-  RedeemIntentDeclareds = 'redeemIntentDeclareds',
-  RedeemIntentConfirmeds = 'redeemIntentConfirmeds',
-  RedeemProgresseds = 'redeemProgresseds',
-  UnstakeProgresseds = 'unstakeProgresseds',
-}
+import Comparable from '../../m0_facilitator/observer/Comparable';
 
 /**
  * Represents ContractEntity model object.
@@ -46,13 +25,17 @@ export enum EntityType {
 export default class ContractEntity extends Comparable<ContractEntity> {
   public contractAddress: string;
 
-  public entityType: EntityType;
+  public entityType: string;
 
   public timestamp: BigNumber;
 
   public createdAt?: Date;
 
   public updatedAt?: Date;
+
+  public static validEntityTypes: Record<string, string>;
+
+  // public static validEnumEntityTypes = new Set<EntityTypesEnum>();
 
   /**
    * Constructor to set fields of Contract Entities model.
@@ -64,14 +47,14 @@ export default class ContractEntity extends Comparable<ContractEntity> {
    */
   public constructor(
     contractAddress: string,
-    entityType: EntityType,
+    entityType: string,
     timestamp: BigNumber,
     createdAt?: Date,
     updatedAt?: Date,
   ) {
     super();
     this.contractAddress = contractAddress;
-    this.entityType = entityType;
+    this.entityType = ContractEntity.validEntityTypes[entityType];
     this.timestamp = timestamp;
     this.createdAt = createdAt;
     this.updatedAt = updatedAt;
@@ -96,5 +79,9 @@ export default class ContractEntity extends Comparable<ContractEntity> {
     }
 
     return 0;
+  }
+
+  public static setValidEntityTypes(validEntityTypes: Record<string, string>): void {
+    this.validEntityTypes = validEntityTypes;
   }
 }

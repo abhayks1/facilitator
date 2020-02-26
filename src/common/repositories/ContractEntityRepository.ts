@@ -22,8 +22,8 @@ import {
 } from 'sequelize';
 
 import ContractEntity, { EntityType } from '../models/ContractEntity';
-import Subject from '../observer/Subject';
-import Utils from '../Utils';
+import Subject from '../../m0_facilitator/observer/Subject';
+import Utils from '../../m0_facilitator/Utils';
 
 /**
  * An interface, that represents a row from a contract entities table.
@@ -64,25 +64,7 @@ export default class ContractEntityRepository extends Subject<ContractEntity> {
         },
         entityType: {
           primaryKey: true,
-          type: DataTypes.ENUM({
-            values: [
-              // Common entities
-              EntityType.GatewayProvens,
-              EntityType.StateRootAvailables,
-              // Stake & Mint Entities
-              EntityType.StakeRequesteds,
-              EntityType.StakeIntentDeclareds,
-              EntityType.StakeIntentConfirmeds,
-              EntityType.StakeProgresseds,
-              EntityType.MintProgresseds,
-              // Redeem & Unstake entities
-              EntityType.RedeemRequesteds,
-              EntityType.RedeemIntentDeclareds,
-              EntityType.RedeemIntentConfirmeds,
-              EntityType.RedeemProgresseds,
-              EntityType.UnstakeProgresseds,
-            ],
-          }),
+          type: DataTypes.STRING,
         },
         timestamp: {
           type: DataTypes.BIGINT,

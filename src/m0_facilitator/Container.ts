@@ -22,6 +22,8 @@ import Services from './services/Services';
 import Subscriptions from './subscriptions/Subscriptions';
 import TransactionHandler from './TransactionHandler';
 import { Config } from './Config/Config';
+import ContractEntity, { EntityType } from '../common/models/ContractEntity';
+import { EntityTypes } from './Constants';
 
 export default class Container {
   /**
@@ -58,6 +60,8 @@ export default class Container {
     const services = Services.create(repositories, config);
 
     repositories.attach(services);
+
+    ContractEntity.setValidEntityTypes(EntityTypes);
 
     return new Facilitator(subscriptions.originSubscriber, subscriptions.auxiliarySubscriber);
   }
